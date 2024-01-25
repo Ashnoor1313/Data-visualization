@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt 
 
-#-------------------------------
+#---------------------------------------------------------------------------------
 
 # Creating line plot 
 
@@ -13,5 +13,143 @@ plt.figure(figsize = (10,8) )
 plt.plot(x,y,color = 'c',linewidth = 5)                                         # creatimg the line plot  
 plt.xlabel('X axis',color = 'b', size = 15)                                     # adding style to the curve
 plt.ylabel('Y axis',color = 'b', size = 15)
-plt.title('curve of y = x**2', color = 'r', size = 20)       # giving title to the curve    
+plt.title('curve of y = x**2', color = 'r', size = 20)                          # giving title to the curve    
 plt.show()
+
+
+#--------------------------------------------------------------------------------
+
+# Creating multiple line plots
+
+
+boys_height = [160,166,178,169,176]                                                         # data sets for the graph
+
+girls_height = [158,160,172,167,175]
+
+plt.figure(figsize = (10,8))                                                                # setting the size of the figure 
+plt.plot([1,2,3,4,5] , boys_height , color = 'c', linewidth = 2, label = 'Boys_height')     # defining the graph
+plt.plot([1,2,3,4,5], girls_height , color = 'g', linewidth = 2, label = 'Girls_height')
+plt.xlabel('Groups', size = 15 ,color = 'k' )                                               # adding style to the graph
+plt.ylabel(' Height in cm ', size = 15 , color = 'k')
+plt.xticks([1,2,3,4,5],labels = ['Group1','Group2','Group3','Group4','Group5'])
+plt.title('Average height of boys and girls in different groups', size = 20 , color = 'r')
+plt.legend()
+plt.show() 
+
+
+
+#-------------------------------------------------------------------------
+
+
+# Creating bar plots 
+
+grade = ['I','II','III','IV','V']                                            # defining data for the bar plot 
+no_students = [160,140,150,130,110]
+
+plt.figure(figsize = (10,8))                                                 # setting  size of the bar plot
+plt.bar(grade, no_students, color = ['c','m','r','b','g'], label = grade)    # creating the bar plot 
+plt.title('No of students in each grade', size = 20 , color = 'r')           # adding style to the plot
+plt.xlabel('Grade', color = 'b', size = 15)
+plt.ylabel('Number of students', color = 'b', size = 15)
+plt.legend()
+plt.show() 
+
+#----------------------------------------------------------------------
+
+# Creating horizontal bar plots 
+
+grade = ['I','II','III','IV','V']                                            # defining data for the bar plot 
+no_students = [160,140,150,130,110]
+
+plt.figure(figsize = (10,8))                                                 # setting  size of the bar plot
+plt.barh(grade, no_students, color = ['turquoise','lightcoral','lightpink',
+                                'palegreen','antiquewhite'], label = grade)   # creating the  horizontal bar plot by using barh
+plt.title('No of students in each grade', size = 20 , color = 'r')           # adding style to the plot
+plt.xlabel('Grade', color = 'b', size = 15)
+plt.ylabel('Number of students', color = 'b', size = 15)
+plt.legend()
+plt.show() 
+
+
+
+#------------------------------------------------------------------
+
+# Creating histogram 
+
+
+no_students = [220,270,290,230,190,280]
+
+plt.figure(figsize = (10,8))
+plt.hist( bins = [0,10,20,30,40,50], x = [0,10,20,30,40,50] ,weights = no_students , color = 'lightpink', edgecolor = 'k',
+          histtype = 'bar')
+plt.xlabel('Age groups', color = 'brown', size = 15)
+plt.ylabel('no of studernts ', color = 'brown', size = 15)
+plt.title('No of students in different age groups ', color = 'red', size = 20)
+plt.show()
+
+
+#---------------------------------------------------------------------------------
+
+# Creating multiple histogram 
+
+bins_ages = np.array([0,10,20,30,40,50])                                                                            # Defining the data for the histogram
+boys_ages = [1,12,34,45,49,14,9,7,6,18,29,23,49,50,37,26,19,20,21,34,42,45,32,19,12,37,49,10,9,4,8,17,29,30]
+girls_ages = [3,4,5,45,23,15,23,19,20,29,39,18,36,28,23,17,2,9,15,49,50,31,20,23,47,27,17,10,9,19,15,27,38,45]
+
+plt.figure(figsize = (10,8))                                                                                        # setting the size of the figure
+plt.hist([ boys_ages,girls_ages], bins_ages  , color = ['lightblue','orchid']                                       # creating histogram by calling hist  
+         , edgecolor  = 'k', linewidth = 2, label = ['Boys_height','Girls_height'])
+plt.xlabel('Age groups', color = 'crimson' , size = 15)
+plt.ylabel('Height in cm', color = 'crimson' , size = 15)                                                           # adding style to the plot
+plt.title('no of boys and girls on different age groups', size = 20 , color = 'red')
+plt.legend()
+plt.show()
+
+
+#--------------------------------------------------------------------------------------- 
+
+# creating pie chart 
+
+plt.figure(figsize = (10,8))
+activities = ['Sleeping','Eating','Walking','Playing','Studying']                                           # Defining the data for the piechart
+data = [27,15,48,59,20]
+
+plt.pie( data , labels = activities ,  colors = ['lightpink','coral','navy','fuchsia','darkseagreen'], explode = (0,0.1,0,0,0)
+         ,shadow = True , autopct = '%1.1f%%')
+plt.legend()
+plt.title('Daily activities' , size = 20 , color = 'blue')                                                   # adding style to the plot
+plt.show()
+
+#-----------------------------------------------------------------------------------------
+
+
+# creating scatter plot                         
+
+data = [27,15,48,59,20]                                                                             # Defining the data for the scatter plot
+
+plt.figure(figsize = (10,8))
+plt.scatter(data, [10,14,26,45,29], color = 'red', marker = "*")
+plt.xlabel('X axis', color = 'red', size = 15)
+plt.ylabel('Y axis', size = 15, color = 'red')
+plt.title('Scatter plot', size = 20 , color = 'palegreen')                                           # adding style to the plot
+plt.show()
+
+
+
+
+# creating subplots 
+
+plt.figure(figsize= (10,8))
+plt.subplot(2,1,1)
+plt.plot([1,2,3,4],[1,4,6,8], color = 'lightpink',linewidth = 2, label = 'y = x**2')
+plt.title('Line graphs', color = 'green',size = 20)
+plt.ylabel('Y axis', size = 15, color = 'navy')
+plt.legend()
+
+plt.subplot(2,1,2)
+plt.plot([1,2,3,4],[1,8,27,64], color = 'coral',linewidth = 2 ,label = 'y = x**3')
+plt.ylabel('Y axis', size = 15, color = 'navy')
+plt.xlabel('X axis ',size = 15, color = 'navy')
+plt.legend()
+plt.show()
+
